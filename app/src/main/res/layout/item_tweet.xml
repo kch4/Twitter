@@ -48,4 +48,36 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/ibReply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfileImage"
+        android:background="@color/white"
+        android:tint="?attr/colorButtonNormal"
+        app:srcCompat="@drawable/ic_vector_compose_dm"
+        android:layout_toStartOf="@+id/ibFav" />
+
+    <ImageButton
+        android:id="@+id/ibFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:tint="?attr/colorButtonNormal"
+        app:srcCompat="@drawable/ic_vector_heart_stroke"
+        android:layout_toStartOf="@+id/ibRetweet" />
+
+    <ImageButton
+        android:id="@+id/ibRetweet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:background="@color/white"
+        android:tint="?attr/colorButtonNormal"
+        app:srcCompat="@drawable/ic_vector_retweet_stroke"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

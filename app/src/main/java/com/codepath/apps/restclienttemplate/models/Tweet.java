@@ -17,6 +17,7 @@ public class Tweet implements Parcelable {
     public String createdAt;
     public String screen;
 
+
     // deserialize JSON
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException{
         Tweet tweet = new Tweet();

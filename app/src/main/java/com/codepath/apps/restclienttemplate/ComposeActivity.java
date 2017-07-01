@@ -31,6 +31,7 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
         TextInputLayout text1 = (TextInputLayout) findViewById(R.id.text1);
         text1.getEditText().addTextChangedListener(new CharacterCountErrorWatcher(text1, 1, 140));
+
         final Button button = (Button) findViewById(R.id.bTweet);
         client = TwitterApp.getRestClient();
         button.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,7 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
     }
+
     public void onSubmit(View v) {
         EditText etTweet = (EditText) findViewById(R.id.etTweet);
         String body = etTweet.getText().toString();
@@ -57,6 +59,7 @@ public class ComposeActivity extends AppCompatActivity {
                 Intent data = new Intent();
                 // Pass relevant data back as a result
                 data.putExtra("new", tweet);
+                //data.putExtra("UID", uid);
 //                data.putExtra("code", 200); // ints work too
                 // Activity finished ok, return the data
                 setResult(RESULT_OK, data); // set result code and bundle data for response

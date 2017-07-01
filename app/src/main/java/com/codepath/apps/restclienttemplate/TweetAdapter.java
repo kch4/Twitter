@@ -3,9 +3,12 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +31,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     public TweetAdapter(List<Tweet> tweets){
         mTweets = tweets;
     }
+    TwitterClient client = TwitterApp.getRestClient();
     // for each row, inflate the layout and cache references into ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,6 +42,8 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         ViewHolder viewholder = new ViewHolder(tweetView);
         return viewholder;
     }
+
+
 
     // bind the values based on the position of the element
 
@@ -62,12 +68,15 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
 
     // create ViewHolder class
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView ivProfileImage;
         public TextView tvUsername;
         public TextView tvBody;
         public TextView tvScreenName;
         public TextView tvRelativeDate;
+        public ImageButton ibReply;
+        public ImageButton ibFav;
+        public ImageButton ibRetweet;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -79,9 +88,42 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
             tvBody = (TextView) itemView.findViewById(R.id.tvBody);
             tvScreenName = (TextView) itemView.findViewById(R.id.tvScreenName);
             tvRelativeDate = (TextView)itemView.findViewById(R.id.tvRelativeDate);
+            ibReply = (ImageButton)itemView.findViewById(R.id.ibReply);
+            ibFav = (ImageButton)itemView.findViewById(R.id.ibFav);
+            ibRetweet = (ImageButton) itemView.findViewById(R.id.ibRetweet);
+
+            ibReply.setOnClickListener(this);
+            ibFav.setOnClickListener(this);
+            ibRetweet.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View v) {
+            Button b = (Button) v;
+            switch(b.getId()) {
+                case R.id.ibReply:
+                    //compose activity
+                    Log.d("Sending data", "Reply"); // perform
+                    // action
+                    break;
+//                case R.id.YOUR_SECOND_BUTTON:
+//                    // Do something
+//                    break;
+            }
+        }
     }
+    public void clear() {
+        mTweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        mTweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
     public String getRelativeTimeAgo(String rawJsonDate) {
         String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
         SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
