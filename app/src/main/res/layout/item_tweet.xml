@@ -54,30 +54,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivProfileImage"
+        android:layout_toStartOf="@+id/ibFav"
         android:background="@color/white"
         android:tint="?attr/colorButtonNormal"
-        app:srcCompat="@drawable/ic_vector_compose_dm"
-        android:layout_toStartOf="@+id/ibFav" />
+        app:srcCompat="@drawable/ic_vector_compose_dm" />
 
     <ImageButton
         android:id="@+id/ibFav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBody"
+        android:layout_toStartOf="@+id/ibRetweet"
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:tint="?attr/colorButtonNormal"
-        app:srcCompat="@drawable/ic_vector_heart_stroke"
-        android:layout_toStartOf="@+id/ibRetweet" />
+        app:srcCompat="@drawable/ic_vector_heart_stroke" />
 
     <ImageButton
         android:id="@+id/ibRetweet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/tvBody"
         android:background="@color/white"
         android:tint="?attr/colorButtonNormal"
-        app:srcCompat="@drawable/ic_vector_retweet_stroke"
-        android:layout_alignParentEnd="true" />
+        app:srcCompat="@drawable/ic_vector_retweet_stroke" />
 
 </RelativeLayout>

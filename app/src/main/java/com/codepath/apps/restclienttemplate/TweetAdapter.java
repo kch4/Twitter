@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -101,10 +102,12 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         @Override
         public void onClick(View v) {
             Button b = (Button) v;
+            Intent intent;
             switch(b.getId()) {
                 case R.id.ibReply:
                     //compose activity
                     Log.d("Sending data", "Reply"); // perform
+//                    intent = new Intent(context, ComposeActivity.class);
                     // action
                     break;
 //                case R.id.YOUR_SECOND_BUTTON:
